@@ -112,3 +112,83 @@ dogs = animals.filter(dog => dog.class === 'dog');
 console.log(dogs);
 
 // #learnabout functional programming!!
+
+
+
+
+// object oriented programming (OOP) = coding paradigm / coding pattern
+// (syntactic sugar)
+
+class Animal {
+  // speciális metódius az osztályon, minden példányosításkor lefut
+  constructor(name) {
+    this.name = name;
+    this.health = 100;
+  }
+  eat() {
+    console.log('eating...');
+  }
+}
+
+// példányosítás:
+const myAnimal = new Animal('Pista');
+
+console.log(myAnimal.name);
+myAnimal.eat();
+
+// a dog class örökli az összes tulajdonságát az Animal-nek:
+class Dog extends Animal {
+  constructor(name) {
+    // ha ez egy alosztály akkor kötelező meghívni a super függvény-t
+    super(name);
+    this.name = name;
+    this.race = 'dog';
+    // this.legscount = 4;
+    Object.defineProperty(this, 'legscount', {
+      value: 4,
+      // a legscount nem lesz módosítható
+      writable: false,
+      // ha valaki for in.. ciklussal végigmegy ezen az objecten
+      // akkor benne legyen e ez a property a ciklusban
+      enumerable: true,
+      // alosztályok módosíthatják e ezeket a beállításokat
+      configurable: true
+    });
+  } 
+  bark() {
+    console.log(this.name+' is barking!');
+  }
+}
+
+const myDog = new Dog('Bodri');
+const myOtherDog = new Dog('Füles');
+
+myOtherDog.bark();
+
+myDog.eat();
+myDog.bark();
+myDog.legscount = 10;
+console.log(myDog.legscount);
+
+
+class MutantDog extends Dog {
+  constructor(name) {
+    super(name);
+    Object.defineProperty(this, 'legscount', {
+      value: 4,
+      writable: true,
+      enumerable: true,
+      configurable: true
+    });
+  }
+  speak() {
+    console.log(this.name+' beszélni is tud');
+  }
+}
+
+let myMutantDog = new MutantDog('Mutáns Kutya');
+myMutantDog.bark();
+myMutantDog.legscount = 5;
+console.log('lábainak a száma: '+myMutantDog.legscount);
+myMutantDog.speak();
+
