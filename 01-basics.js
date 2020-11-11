@@ -44,11 +44,66 @@ if (kapcsolo === true) {
 if (kapcsolo === true) {
   console.log('a kapcsoló be van kapcsolva');
   // opcionális else ág: akkor fut le ha a a feltétel hamis
+} else if (kapcsolo === 4) {
+  console.log('a kapcsoló értéke 4');
 } else {
-  console.log('a kapcsoló ki van kapcsolva');
+  console.log('else ág');
 }
+
+// switch...
 
 let x = 4;
 let y = 4 / 'valami';
 
 console.log('az y változó értéke: '+y);
+
+if (kapcsolo === false) console.log('yay');
+
+let szam = 10;
+while (szam > 0) {
+  console.log('szam-bol levontunk egyet:'+szam);
+  szam--; // szam = szam - 1;
+}
+
+const szamok = [2,5,4,6,8,67,10];
+
+// a tömbnek a 3adik eleme:
+console.log(szamok[2]);
+
+for (let i = 0; i<szamok.length; i++) {
+  if (szamok[i] === 6) {
+    console.log('talaltam 6ost');
+  }
+  // console.log(szamok[i]);
+}
+
+// fügvények
+//
+
+function osszeadas(szam1, szam2) {
+  if ((typeof(szam1) === 'number') && (typeof(szam2) === 'number') ) {
+    let osszeg = szam1 + szam2;
+    // early return
+    return osszeg;
+  } 
+  return 'nem számot kaptam!';
+}
+
+console.log(osszeadas(3, 4));
+console.log(osszeadas('asda', 4));
+
+
+
+
+const sayHello = function(name) {
+  console.log('hello, '+name);
+};
+
+sayHello('John');
+
+// arrow function
+const sayHello2 = (name) => {
+  console.log('hello, '+name);
+};
+
+
